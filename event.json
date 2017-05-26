@@ -1,0 +1,45 @@
+{
+  "CodePipeline.job": {
+    "id": "4e625c86-c39d-4474-97d4-5badab37ac6f",
+    "accountId": "nn",
+    "data": {
+      "actionConfiguration": {
+        "configuration": {
+          "FunctionName": "slamback",
+          "UserParameters": "{\"slackChan\":\"#dev\", \"message\":\"ciao\", \"slackToken\":\"nn\", \"artifact\":\"Elysium-app\"}"
+        }
+      },
+      "inputArtifacts": [
+        {
+          "location": {
+            "s3Location": {
+              "bucketName": "codepipeline-eu-west-1-340162681899",
+              "objectKey": "android-elysium-app/Elysium-ap/TFaMNxV"
+            },
+            "type": "S3"
+          },
+          "revision": null,
+          "name": "Elysium-app"
+        }
+      ],
+      "outputArtifacts": [
+        {
+          "location": {
+            "s3Location": {
+              "bucketName": "nn",
+              "objectKey": "nn"
+            },
+            "type": "S3"
+          },
+          "revision": null,
+          "name": "no-op"
+        }
+      ],
+      "artifactCredentials": {
+        "secretAccessKey": "nn",
+        "sessionToken": "nn",
+        "accessKeyId": "nn"
+      }
+    }
+  }
+}
