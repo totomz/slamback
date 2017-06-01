@@ -1,4 +1,6 @@
 # slamback
+[![Build Status](https://travis-ci.org/totomz/slamback.svg?branch=master)](https://travis-ci.org/totomz/slamback)
+
 Simple AWS Lambda function to post a message on a Slack! channel from AWS CodePipeline
 
 To create a Slack token
