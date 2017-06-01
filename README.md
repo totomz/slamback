@@ -7,4 +7,3 @@ To create a Slack token
 2. Add a bot user
 3. Go on OAuth & Permissions, and select "Install app to team" under "OAuth Tokens & Redirect URLs"
 4. Your token is `Bot User OAuth Access Token`
-
