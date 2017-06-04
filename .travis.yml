@@ -11,7 +11,7 @@ env:
   - secure: BV18Hzj3kumhaWF6h4Kd8ilfMscVlw8jPaWg85uov993vgOvHvn0ewU0PINKG/wa0JuF6QrJ9gyeyWTBBAOpYufmoQAjA1V5J2BvNFYmrQyiagepsybg2S3MBmcl6KxEynxU41hDW/j3LMttrkjTB+9fWsp2aRYuxVX/YvHCk+UpqqgDd6UP+IgR9EHCITbYfovaM1wwyiHyS1xC3kpTNQiyAnsOTg2rrODyK/GBPzuk7KAErnu3TdSZriTJNDce9p2mgzJjvYga4n7302Y41YTq0qsUkpDEd3HoDppgemh0+t2atYRYc62+MbZd6qSAp+QVq/GmTPhlgLntB43HpoxhTx1Ku8+/vSdi4w7tOVqHk9qaLCqoSgfdGRnWj7hqVkG49Q+LGeECMVE6UMPBOQeO3JcbwoPYflvB2EXPeqwoOi8agN4TXs1/n2Ky0r7BdBKB54QRkZwQM19O8QgW4nwZ0LhWRkwc3Pp7uVu0IcYXX3Ku+4Nv1Y3Q5XJwQOeNsp6IEqg41W5jlcLs8KcdRYAO7KFPglp5+U0Qmlvga1OTeLmGUd2AT1RRplvToXkd2iszZ7VmiJZCkn8x5QvhigR0qmtExo1rKysvS4fqJS04XLjT/cF4KlB4R1qhkafO6MoJXtksWnG9gKft7mXSPIto8bQ7BM2RrRFHjHtJp2E=
 after_success:
   - mkdir build
-  - zip -r build/pippo.zip ./ --exclude="*.git*" --exclude="*.idea*" --exclude="*.lambda*" --exclude="*test*" --exclude="*build*" --exclude=.DS_Store --exclude=.env --exclude=.travis.yml --exclude=aws_stack.json --exclude=context.json --exclude=event.json --exclude=slamback.iml
+  - zip -r build/slamback.zip ./ --exclude="*.git*" --exclude="*.idea*" --exclude="*.lambda*" --exclude="*test*" --exclude="*build*" --exclude=.DS_Store --exclude=.env --exclude=.travis.yml --exclude=aws_stack.json --exclude=context.json --exclude=event.json --exclude=slamback.iml
 deploy:
   provider: s3
   access_key_id: AKIAJ6DMKJ43ZOI4VEAA
