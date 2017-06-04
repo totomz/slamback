@@ -22,31 +22,6 @@ exports.handler = (event, context, callback) => {
     const config = JSON.parse(event["CodePipeline.job"].data.actionConfiguration.configuration.UserParameters);
     let artifact = event["CodePipeline.job"].data.inputArtifacts.filter(artifact => artifact.name === config.artifact);
 
-    try {
-        console.log(">>>>>>>>>>>>");
-        var params = {
-            pipelineExecutionId:  jobId,
-            pipelineName: 'android-elysium-app'
-        };
-        codepipeline.getPipelineExecution(params).promise()
-            .then(info => {
-                console.log("dajeee");
-                console.log(info);
-                console.log(info.pipelineExecution.artifactRevisions.revisionSummary);
-                return Promise.resolve(info.pipelineExecution.artifactRevisions.revisionSummary);
-            })
-            .catch(function (reason) {
-                console.log(">******< ERROR getting the name");
-                console.log(reason);
-            })
-            .done();
-    }
-    catch (err){
-        console.log("{{{ ERROR }}}");
-        console.log(err);
-        callback(err, 'Uffiiiiii');
-    }
-
     if(artifact.length != 1){
         callback(new Error(`Only 1 artifact is allowed - looking for ${config.artifact}`), 'Artifact NOT published!');
     }

@@ -17,7 +17,10 @@
         "FunctionName":"slamback",
         "Description": "Connect CodePipeline and Slack!",
         "Environment": {"Variables": {"SLACK_TOKEN": { "Ref" : "SlackToken" }}},
-        "Code": {"ZipFile": "./build/slamback.zip"},
+        "Code": {
+          "S3Bucket" : "slamback-release",
+          "S3Key" : "slamback.zip"
+        },
         "Role": {"Fn::GetAtt": ["SlambackRole", "Arn"]},
         "Timeout": 60,
         "Handler": "index.handler",
