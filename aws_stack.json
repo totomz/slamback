@@ -1,0 +1,76 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Description": "AWS Lambda to integrate CodePipeline with Slack!",
+  "Parameters" : {
+    "SlackToken" : {
+      "Type" : "String",
+      "Default" : "xxx",
+      "Description" : "The Slack! access token to authenticate slamback",
+      "NoEcho": true
+    }
+  },
+  "Resources": {
+    "Slamback": {
+      "Type": "AWS::Lambda::Function",
+      "DependsOn": ["SlambackRole"],
+      "Properties": {
+        "FunctionName":"slamback",
+        "Description": "Connect CodePipeline and Slack!",
+        "Environment": {"Variables": {"SLACK_TOKEN": { "Ref" : "SlackToken" }}},
+        "Code": {"ZipFile": "./build/slamback.zip"},
+        "Role": {"Fn::GetAtt": ["SlambackRole", "Arn"]},
+        "Timeout": 60,
+        "Handler": "index.handler",
+        "Runtime": "nodejs6.10",
+        "MemorySize": 128
+      }
+    },
+    "SlambackRole":{
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [{
+              "Effect": "Allow",
+              "Principal": {"Service": ["lambda.amazonaws.com"]},
+              "Action": ["sts:AssumeRole"]
+          }]
+        },
+        "Path": "/service-role/"
+      }
+    },
+    "SlambackExecutionPolicy":{
+      "DependsOn": ["SlambackRole"],
+      "Type": "AWS::IAM::Policy",
+      "Properties":{
+        "PolicyName" : "CFNUsers",
+        "Roles": [{"Ref": "SlambackRole"}],
+        "PolicyDocument" : {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": ["logs:*"],
+              "Resource": ["arn:aws:logs:*:*:*"]
+            },
+            {
+              "Effect": "Allow",
+              "Action": ["kms:Decrypt"],
+              "Resource": ["*"]
+            },
+            {
+              "Effect": "Allow",
+              "Action": ["s3:GetObject"],
+              "Resource": ["*"]
+            },
+            {
+              "Effect": "Allow",
+              "Action": ["codepipeline:*"],
+              "Resource": ["*"]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

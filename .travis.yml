@@ -14,7 +14,7 @@ after_success:
   - zip -r build/pippo.zip ./ --exclude="*.git*" --exclude="*.idea*" --exclude="*.lambda*" --exclude="*test*" --exclude="*build*" --exclude=.DS_Store --exclude=.env --exclude=.travis.yml --exclude=aws_stack.json --exclude=context.json --exclude=event.json --exclude=slamback.iml"
 deploy:
   provider: s3
-  access_key_id: AKIAJ6DMKJ43ZOI4VEAA
+  access_key_id: MAH
   secret_access_key:
     secure: KtQ4jkhigZgANJsI2Z7tkud136S5kLCvE72tQv4JkZpu1d4yJ2lNUkivFqM0qtq7HrC05MRbcfcKGo2PN7EC9KgxaFD1zyhG2ZTNBUaCow87SMvV9QXcC3/CCXPFaVSOJrun7fenTdBNIuzaGqZ4l9LOJlpJDmL1z4VZP3OUctXm0ggaa9FVq4AdevtLewYaOuWBmyFyiJG73bx0MO2YwBS+1uafIV5augfXqhfU2ZKZ7NebM0IHZ7uhM/VVA+qTeJlUBdrF8Pxzph4mMcOR1Gsb3SiEyXQYPoK4CJOEY5ao4meXKKZ5A5XdA2jiyu+dsLQIHBT2JWosPgO1ECm+OAzgOE7Y5HVcJnuKGSwbekys360Mh/i2chzPlaC0N4NetgjtWPJ6BZaI8FZf6e9LlnrYRoDFC4wrMvw2V0TX+aEF5jF8tgE2fNCmMJFGlnKWydt7UbLfw6LJRtEQbG08xXYyqW91Q/kHgD/+9LfB4e+9iUQk4I0ZbKKHa0kjfBi30HK9RUjk65S6EbCjgUCRwVhuJQadIImB3lV6ABOgcAqHyO+hX0+kUVJEOVrOUohrDaluIQWtFalgo7+werU85NaRx3DPYAyDtUmuX4AcJLLRBEjostVQt1aqLi3/V2Tm7hfd5y6Z06Y4cwFAKaLNENNUX4nP+q0eDUfxpYm8sA4=
   bucket: slamback-release
