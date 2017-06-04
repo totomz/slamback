@@ -20,4 +20,3 @@ deploy:
   bucket: slamback-release
   skip_cleanup: true
   local_dir: build
-  region: eu-west-1
